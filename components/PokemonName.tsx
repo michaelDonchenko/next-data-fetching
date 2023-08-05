@@ -15,7 +15,7 @@ const PokemonName = ({pokemon}: Props) => {
   }, [pokemon]);
 
   return (
-    <p style={{cursor: "pointer"}} onClick={handleClick}>
+    <p style={{cursor: "pointer", maxWidth: "fit-content"}} onClick={handleClick}>
       {pokemon}
     </p>
   );
