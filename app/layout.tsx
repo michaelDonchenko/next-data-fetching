@@ -13,7 +13,10 @@ export const metadata: Metadata = {
 export default function RootLayout({children}: {children: React.ReactNode}) {
   return (
     <html lang="en">
-      <body className={inter.className} style={{maxWidth: "900px", margin: "0 auto"}}>
+      <body
+        className={inter.className}
+        style={{maxWidth: "900px", margin: "0 auto", padding: "15px 0"}}
+      >
         <h1>Data fetching in Nextjs</h1>
         <Search />
         {children}

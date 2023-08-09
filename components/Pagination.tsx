@@ -37,7 +37,9 @@ const Pagination = ({count, next, previous}: Props) => {
 
   return (
     <div>
-      <button onClick={onPrevious}>Prev</button>
+      <button style={{marginRight: "10px"}} onClick={onPrevious}>
+        Prev
+      </button>
       <button onClick={onNext}>Next</button>
     </div>
   );
