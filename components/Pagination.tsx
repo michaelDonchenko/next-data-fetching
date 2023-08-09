@@ -4,29 +4,23 @@ import React, {useCallback} from "react";
 import {useRouter} from "next/navigation";
 
 interface Props {
-  count: number | undefined;
   next: string | null;
   previous: string | null;
 }
 
-const Pagination = ({count, next, previous}: Props) => {
-  if (!count) {
-    return <div>There was error with pagination</div>;
-  }
+const Pagination = ({next, previous}: Props) => {
   const router = useRouter();
 
-  const onNext = useCallback(() => {
+  const handleNext = useCallback(() => {
     if (!next) {
       return;
     }
 
     const queryString = next.split("?")[1];
-    // return console.log(queryString);
-
     router.push(`?${queryString}`);
   }, [next]);
 
-  const onPrevious = useCallback(() => {
+  const handlePrev = useCallback(() => {
     if (!previous) {
       return;
     }
@@ -37,10 +31,10 @@ const Pagination = ({count, next, previous}: Props) => {
 
   return (
     <div>
-      <button style={{marginRight: "10px"}} onClick={onPrevious}>
+      <button style={{marginRight: "10px"}} onClick={handlePrev}>
         Prev
       </button>
-      <button onClick={onNext}>Next</button>
+      <button onClick={handleNext}>Next</button>
     </div>
   );
 };

@@ -52,11 +52,7 @@ const RootPage = async ({searchParams}: Props) => {
           <div>No pokemons found</div>
         )}
       </Suspense>
-      <Pagination
-        count={pokemonsResponse?.count}
-        next={pokemonsResponse?.next}
-        previous={pokemonsResponse?.previous}
-      />
+      <Pagination next={pokemonsResponse?.next} previous={pokemonsResponse?.previous} />
     </div>
   );
 };
