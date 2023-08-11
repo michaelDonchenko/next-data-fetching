@@ -1,3 +1,4 @@
+import {Suspense} from "react";
 import Search from "@/components/Search";
 import "./globals.css";
 import type {Metadata} from "next";

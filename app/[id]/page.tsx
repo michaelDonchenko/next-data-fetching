@@ -1,5 +1,5 @@
 import Image from "next/image";
-import React, {Suspense} from "react";
+import React from "react";
 
 interface Props {
   params: {id: string};
@@ -35,21 +35,19 @@ const PokemonPage = async ({params}: Props) => {
 
   return (
     <div>
-      <Suspense fallback={<p>Loading..</p>}>
-        {pokemon ? (
-          <div>
-            <h1>{pokemonName}</h1>
-            <Image
-              src={pokemon.sprites.other["official-artwork"].front_default}
-              height={400}
-              width={400}
-              alt={pokemonName}
-            />
-          </div>
-        ) : (
-          <p>Pokemon not found...</p>
-        )}
-      </Suspense>
+      {pokemon ? (
+        <div>
+          <h1>{pokemonName}</h1>
+          <Image
+            src={pokemon.sprites.other["official-artwork"].front_default}
+            height={400}
+            width={400}
+            alt={pokemonName}
+          />
+        </div>
+      ) : (
+        <p>Pokemon not found...</p>
+      )}
     </div>
   );
 };

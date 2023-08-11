@@ -1,6 +1,6 @@
 import Pagination from "@/components/Pagination";
 import PokemonName from "@/components/PokemonName";
-import React, {Suspense} from "react";
+import React from "react";
 
 interface Props {
   searchParams: Record<string, string | undefined>;
@@ -38,20 +38,20 @@ const getPokemons = async (searchParams: Props["searchParams"]) => {
   }
 };
 
+// setTimeout(() => {}, 2000);
+
 const RootPage = async ({searchParams}: Props) => {
   const pokemonsResponse: PokemonsResponse = await getPokemons(searchParams);
 
   return (
     <div>
-      <Suspense fallback={<h3>Loading...</h3>}>
-        {pokemonsResponse?.results.length > 0 ? (
-          pokemonsResponse?.results.map((pokemon) => (
-            <PokemonName key={pokemon.name} pokemon={pokemon.name} />
-          ))
-        ) : (
-          <div>No pokemons found</div>
-        )}
-      </Suspense>
+      {pokemonsResponse?.results.length > 0 ? (
+        pokemonsResponse?.results.map((pokemon) => (
+          <PokemonName key={pokemon.name} pokemon={pokemon.name} />
+        ))
+      ) : (
+        <div>No pokemons found</div>
+      )}
       <Pagination next={pokemonsResponse?.next} previous={pokemonsResponse?.previous} />
     </div>
   );
